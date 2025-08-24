@@ -14,6 +14,10 @@ app.use(express.json({ limit: '20mb' }));
 app.use("/uploads", express.static("uploads"));
 
 // Simple test endpoint
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', message: 'Root route: server is running' });
+});
+
 app.get("/api", (req, res) => {
   const host = req.headers.host;
   res.json({ status: "ok", message: `Server is running on http://${host}: ${process.env.PORT || 5000}` });
